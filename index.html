@@ -10,7 +10,16 @@
 </head>
 <body>
 
-    <audio id="background-music" src="wedding_song.mp3" loop autoplay></audio>
+    <div id="welcome-gate">
+        <h1 class="initials-gate">J & V</h1>
+        <p class="names-gate">José y Violeta</p>
+        <p class="date-gate">25 de Octubre de 2025</p>
+        <button id="start-button" class="fancy-button start-button-gate">
+            <i class="fas fa-heart"></i> Abrir Invitación
+        </button>
+    </div>
+
+    <audio id="background-music" src="wedding_song.mp3" loop></audio>
 
     <nav class="initials-header">
         <p>J & V</p>
@@ -24,7 +33,7 @@
             <h1 class="couple-name">VIOLETA</h1>
             
             <div class="music-auto-note">
-                <p>únete a este momento especial</p>
+                <p>Música de fondo automática</p>
             </div>
         </div>
     </header>
@@ -82,7 +91,7 @@
             <div class="parent-group">
                 <p class="group-title-new">• PADRES de la Novia •</p>
                 <p>Santos Céspedes Bernilla</p>
-                <p>Jerónimo Pérez Coronel</p>
+                <p>Jerónimo Perez Coronel</p>
             </div>
         </div>
         
@@ -117,7 +126,7 @@
         <div class="image-frame-new">
             <img src="vestido_espalda.jpg" alt="Detalle de vestido de novia" class="dress-code-image framed-image-new">
         </div>
-        <h2 class="section-title">Código de vestimenta</h2>
+        <h2 class="section-title">Dress Code</h2>
         <p class="dress-code-note">SE RECOMIENDA NO USAR COLOR VERDE NI BLANCO</p>
     </section>
 
@@ -169,6 +178,32 @@
         const EVENT_TITLE = "Boda José y Violeta";
         const EVENT_DETAILS = "Ceremonia y Recepción de José y Violeta. ¡Los esperamos en Casa de los Novios!";
         const EVENT_LOCATION = "Calle Diego Ferre #925, Ciudad Eten"; 
+
+        // Referencia al audio
+        const audio = document.getElementById('background-music');
+        const welcomeGate = document.getElementById('welcome-gate');
+        const startButton = document.getElementById('start-button');
+
+        // Función para iniciar la invitación (activada por el clic)
+        const startInvitation = () => {
+            // 1. Reproducir la música
+            audio.play().catch(error => {
+                console.error("Error al intentar reproducir el audio:", error);
+                // Si falla (aún con el clic), el navegador es muy estricto, pero la invitación sigue.
+            });
+
+            // 2. Ocultar la pantalla de inicio
+            welcomeGate.style.opacity = '0';
+            setTimeout(() => {
+                welcomeGate.style.display = 'none';
+                // Solo iniciamos el auto-scroll DESPUÉS de que se ha abierto la invitación
+                startAutoScroll(); 
+            }, 500); 
+        };
+
+        // Escucha el clic en el botón de inicio
+        startButton.addEventListener('click', startInvitation, { once: true });
+
 
         // 1. Contador de Tiempo
         const weddingTime = new Date(WEDDING_DATE).getTime();
@@ -226,6 +261,7 @@
         ];
 
         let currentSectionIndex = 0;
+        let autoScrollInterval;
 
         function scrollToNextSection() {
             currentSectionIndex = (currentSectionIndex + 1) % scrollSections.length;
@@ -239,10 +275,12 @@
                 });
             }
         }
-
-        // Configurar el intervalo para el desplazamiento cada 5 segundos (5000ms)
-        const autoScrollInterval = setInterval(scrollToNextSection, 5000);
-
+        
+        function startAutoScroll() {
+             // Configurar el intervalo para el desplazamiento cada 5 segundos (5000ms)
+            autoScrollInterval = setInterval(scrollToNextSection, 5000);
+        }
+        
         // Detener el scroll si el usuario interactúa
         let userInteracted = false;
         const interactionEvents = ['wheel', 'touchstart', 'keydown'];
