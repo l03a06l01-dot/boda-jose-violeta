@@ -33,7 +33,7 @@
             <h1 class="couple-name">VIOLETA</h1>
             
             <div class="music-auto-note">
-                <p>Únete a este momento especial</p>
+                <p>Música de fondo automática</p>
             </div>
         </div>
     </header>
@@ -86,7 +86,7 @@
             <div class="parent-group">
                 <p class="group-title-new">• PADRES del Novio •</p>
                 <p>José Rufino López Ñiquen</p>
-                <p>María Mercedes Llumpo Llumpo</p>
+                <p>María Mercedes Llumpo de López</p>
             </div>
             <div class="parent-group">
                 <p class="group-title-new">• PADRES de la Novia •</p>
@@ -126,7 +126,7 @@
         <div class="image-frame-new">
             <img src="vestido_espalda.jpg" alt="Detalle de vestido de novia" class="dress-code-image framed-image-new">
         </div>
-        <h2 class="section-title">Dress Code</h2>
+        <h2 class="section-title">Código de vestimenta</h2>
         <p class="dress-code-note">SE RECOMIENDA NO USAR COLOR VERDE NI BLANCO</p>
     </section>
 
@@ -195,7 +195,11 @@
             welcomeGate.style.opacity = '0';
             setTimeout(() => {
                 welcomeGate.style.display = 'none';
-                // 3. Iniciar el auto-scroll
+                
+                // 3. Iniciar la animación de la portada
+                document.querySelector('.hero-content').classList.add('animate');
+
+                // 4. Iniciar el auto-scroll
                 startAutoScroll(); 
             }, 500); // 0.5s para la transición de opacidad
         };
@@ -276,7 +280,7 @@
         }
 
         function startAutoScroll() {
-             // Configurar el intervalo para el desplazamiento cada 5 segundos (5000ms)
+             // Configurado a 5 segundos (5000ms)
             autoScrollInterval = setInterval(scrollToNextSection, 5000);
         }
         
