@@ -1,0 +1,574 @@
+/* --- Variables y Reset --- */
+:root {
+    --color-primary: #587d60; /* Verde oliva oscuro */
+    --color-secondary: #f4f2e8; /* Crema/Blanco roto para fondos */
+    --color-text: #333; /* Texto principal oscuro */
+    --color-light-text: #fff;
+    --font-heading: 'Playfair Display', serif; /* Para títulos principales */
+    --font-body: 'Montserrat', sans-serif; /* Para el texto general */
+    --font-script: 'Dancing Script', cursive; /* Para elementos específicos que necesiten script (pocas palabras) */
+    --font-names: 'Cinzel', serif; /* Para nombres de novios y números grandes */
+    --font-script-elegant: 'Great Vibes', cursive; /* Para las iniciales "J & V" y el "y" en portada */
+    --button-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    --button-hover-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-image: url('image_15cf6b.png'); 
+    background-repeat: repeat;
+    background-color: var(--color-secondary);
+    background-attachment: fixed;
+    position: relative; 
+    scroll-behavior: smooth; 
+}
+
+/* Fondo con transparencia (50% de blanco) */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); 
+    z-index: -1; 
+}
+
+h1, h2, h3 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+}
+
+/* Nuevas clases para uniformizar títulos */
+.section-title { 
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+    color: var(--color-primary);
+    font-weight: 400; 
+}
+
+/* Estilo específico para la frase en script legible */
+.script-font-title {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 0.5em;
+    color: var(--color-primary);
+}
+
+
+.section-subtitle { /* Para "Faltan..." */
+    font-family: var(--font-body);
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+    font-weight: 300;
+}
+
+
+/* --- NAV/HEADER (J & V - iniciales grandes) --- */
+.initials-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    z-index: 20;
+}
+
+.initials-header p {
+    color: var(--color-primary); 
+    font-family: var(--font-names); 
+    font-size: 2.5rem; 
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* --- SECCIÓN PORTADA / HERO --- */
+.hero-section {
+    background-image: url('portada_fondo.png'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    flex-direction: column; 
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3); 
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    color: var(--color-light-text);
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    margin-top: 80px; 
+}
+
+.intro-title.script-font-large { /* "¡Nos Casamos!" */
+    font-family: var(--font-script-elegant); 
+    font-size: 3rem; 
+    margin-bottom: 10px;
+    color: var(--color-primary); 
+    line-height: 1;
+}
+
+.couple-name { 
+    font-family: var(--font-names); 
+    font-size: 6rem; 
+    font-weight: 700;
+    letter-spacing: 10px; 
+    text-transform: uppercase;
+    color: var(--color-primary); 
+    line-height: 1;
+    margin: 0;
+}
+
+.and-text.script-font-large { /* "y" */
+    font-family: var(--font-script-elegant); 
+    font-size: 3.5rem; 
+    color: var(--color-primary); 
+    margin-top: 20px; 
+    margin-bottom: 20px; 
+    line-height: 1;
+}
+
+/* --- Nota de Música Automática (Reemplazo del reproductor) --- */
+.music-auto-note {
+    margin-top: 40px;
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-align: center; 
+}
+
+
+/* --- SECCIONES DE CONTENIDO (Centrado) --- */
+.content-section {
+    padding: 80px 5%;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+}
+
+/* --- SECCIÓN BIENVENIDA --- */
+.welcome-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    object-fit: cover;
+    margin-bottom: 30px;
+}
+
+.initials-elegant { /* J & V en la sección bienvenida */
+    font-family: var(--font-script-elegant); 
+    font-size: 4rem; 
+    color: var(--color-primary); 
+    line-height: 1;
+    margin: 40px 0; 
+    font-weight: normal; 
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1); 
+}
+
+.bold-green-text { /* ¡Te Esperamos! */
+    font-weight: bold;
+    color: var(--color-primary);
+    font-size: 1.2em; 
+    margin-top: 20px; 
+}
+
+/* --- SECCIÓN FECHA Y CUENTA REGRESIVA --- */
+.month-new {
+    font-family: var(--font-heading);
+    font-size: 1.8rem; 
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+}
+
+.date-display-new {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.date-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 15px; 
+    position: relative;
+    color: var(--color-primary); 
+}
+
+.date-display-new p {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: var(--font-body); 
+}
+
+.date-display-new .day-number {
+    font-size: 4.5rem; 
+    font-family: var(--font-names); 
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px; 
+    background-color: var(--color-primary);
+}
+
+/* --- Botones --- */
+.fancy-button {
+    display: inline-flex;
+    align-items: center;
+    background-color: #a4c9a6; 
+    color: var(--color-text);
+    padding: 12px 25px; 
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease; 
+    box-shadow: var(--button-shadow); 
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem; 
+}
+
+.fancy-button i { 
+    color: var(--color-primary); 
+    font-size: 1.5rem; 
+    margin-right: 12px;
+}
+
+.fancy-button:hover {
+    background-color: var(--color-primary); 
+    color: var(--color-light-text);
+    box-shadow: var(--button-hover-shadow); 
+    transform: translateY(-2px); 
+}
+
+.fancy-button:hover i { 
+    color: var(--color-light-text);
+}
+
+.calendar-style-button {
+    margin-bottom: 40px; 
+}
+
+/* --- Cronómetro --- */
+.countdown-timer.large-countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 20px; 
+    margin-top: 20px;
+    margin-bottom: 40px; 
+}
+
+.large-countdown-timer div {
+    font-size: 1.2rem; 
+    text-transform: uppercase;
+    color: var(--color-primary); 
+    font-family: var(--font-body); 
+}
+
+.large-countdown-timer span {
+    display: block;
+    font-size: 5rem; 
+    font-weight: bold;
+    font-family: var(--font-names); 
+    line-height: 1;
+    color: var(--color-text); 
+    margin-bottom: 5px; 
+}
+.large-countdown-timer div:last-child span {
+    color: var(--color-primary); 
+}
+
+/* --- SECCIÓN PADRES Y PADRINOS --- */
+.parents-intro, .godparents-intro-custom {
+    font-weight: 700;
+    font-size: 1.3rem; 
+    color: var(--color-primary); 
+    margin-bottom: 25px; 
+    letter-spacing: 1.5px;
+    font-family: var(--font-body); 
+    text-align: center; 
+}
+
+.parents-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 40px;
+    margin-bottom: 40px;
+    width: 100%; 
+    flex-wrap: wrap; 
+}
+
+.parent-group {
+    flex: 1;
+    min-width: 250px; 
+    text-align: center; 
+}
+
+.group-title-new { 
+    font-family: var(--font-heading); 
+    font-size: 2.2rem; 
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    line-height: 1;
+    font-weight: 400; 
+}
+
+.parent-group p:not(.group-title-new) { 
+    line-height: 2;
+    font-size: 1.1rem; 
+    font-family: var(--font-body); 
+}
+
+.godparents-list {
+    max-width: 400px;
+    margin: 0 auto 30px auto; 
+    line-height: 2;
+    text-align: center;
+    font-family: var(--font-body); 
+    font-size: 1.1rem;
+}
+
+/* --- SECCIÓN EVENTOS --- */
+.event-icon {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.colored-icon { 
+    filter: invert(36%) sepia(13%) saturate(1912%) hue-rotate(94deg) brightness(97%) contrast(85%); 
+}
+
+.script-font-small { /* "Todo en el Mismo Lugar" */
+    font-family: var(--font-heading); 
+    font-size: 2.2rem; 
+    line-height: 1.1;
+    margin-bottom: 15px;
+    color: var(--color-primary);
+    font-weight: 400;
+}
+
+.location-name, .time, .address { /* Textos de detalle de eventos */
+    font-family: var(--font-body); 
+    font-size: 1.1rem;
+}
+
+
+/* --- EFECTO DE MARCO IRREGULAR (Fondo transparente) --- */
+.image-frame-new {
+    position: relative;
+    display: inline-block; 
+    max-width: 450px; 
+    margin-bottom: 30px;
+    padding: 0; 
+    background-color: transparent; 
+    box-shadow: none; 
+}
+
+.framed-image-new {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    -webkit-clip-path: url(#torn-paper-clip);
+    clip-path: url(#torn-paper-clip);
+}
+
+
+/* --- Buzón de Deseos y Frases --- */
+.heart-box-icon {
+    font-style: normal;
+    font-size: 4rem;
+    color: var(--color-primary);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.quote-text {
+    font-family: var(--font-body);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--color-text);
+    margin-bottom: 20px;
+}
+
+.bible-ref-new {
+    font-family: var(--font-body); 
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    font-weight: 600; 
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Sección Final de Llamada a la Acción (Footer grande) --- */
+.final-cta-section {
+    padding: 80px 5%;
+    text-align: center;
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+    background-color: transparent; 
+}
+
+.large-text-final { /* Estilo específico para "¡Los esperamos, sean puntuales!" */
+    font-size: 3rem; 
+    margin-bottom: 40px;
+    color: var(--color-primary);
+}
+
+.final-cta-image {
+    width: 100%;
+    max-width: 500px; 
+    height: auto;
+    object-fit: cover;
+    border-radius: 0; 
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* --- FOOTER PEQUEÑO --- */
+footer {
+    background-color: var(--color-text);
+    color: #bbb;
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9rem;
+    font-family: var(--font-body); 
+}
+
+/* --- MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .initials-header p {
+        font-size: 2rem;
+    }
+
+    .intro-title.script-font-large {
+        font-size: 2.2rem;
+    }
+
+    .couple-name {
+        font-size: 4rem;
+        letter-spacing: 5px;
+    }
+
+    .hero-content {
+        margin-top: 50px; 
+    }
+
+    .and-text.script-font-large {
+        font-size: 2.8rem;
+        margin-top: 15px; 
+        margin-bottom: 15px; 
+    }
+
+    .large-text-final {
+        font-size: 2.2rem; 
+    }
+
+    /* Resto de ajustes para móvil... */
+    .initials-elegant {
+        font-size: 3rem; 
+        margin: 30px 0;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+
+    .script-font-title {
+        font-size: 2.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.5rem;
+    }
+
+    .month-new {
+        font-size: 1.4rem;
+    }
+
+    .date-display-new .day-number {
+        font-size: 3.5rem;
+    }
+
+    .large-countdown-timer span {
+        font-size: 3rem;
+    }
+    .large-countdown-timer div {
+        font-size: 0.8rem;
+        gap: 10px;
+    }
+
+    .group-title-new { 
+        font-size: 1.8rem;
+    }
+    .parent-group p:not(.group-title-new), .godparents-list p {
+        font-size: 1rem;
+    }
+
+    .script-font-small { 
+        font-size: 1.8rem;
+    }
+
+    .location-name, .time, .address {
+        font-size: 1rem;
+    }
+
+    .event-details, .parents-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .quote-text {
+        font-size: 1.1rem;
+    }
+    .bible-ref-new {
+        font-size: 0.9rem;
+    }
+}
