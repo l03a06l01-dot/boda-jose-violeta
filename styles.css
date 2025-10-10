@@ -48,10 +48,11 @@ body {
     align-items: center;
     text-align: center;
     transition: opacity 0.5s ease-in-out;
+    opacity: 1; /* Comienza visible */
 }
 
 .initials-gate {
-    font-family: var(--font-names); 
+    font-family: var(--font-script-elegant); 
     font-size: 5rem;
     color: var(--color-primary);
     margin-bottom: 10px;
@@ -80,10 +81,13 @@ body {
     background-color: var(--color-primary);
     color: var(--color-light-text);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* Sobreescribe el estilo del fancy-button para el botón de inicio */
 }
 
 .start-button-gate i {
     color: var(--color-light-text); /* Icono blanco */
+    font-size: 1.5rem;
+    margin-right: 10px;
 }
 
 .start-button-gate:hover {
@@ -544,6 +548,19 @@ footer {
 
 /* --- MEDIA QUERIES --- */
 @media (max-width: 768px) {
+    /* Ajustes para la pantalla de inicio en móvil */
+    .initials-gate {
+        font-size: 4rem;
+    }
+    .names-gate {
+        font-size: 1.5rem;
+    }
+    .start-button-gate {
+        font-size: 1.1rem;
+        padding: 12px 30px;
+    }
+    
+    /* Resto de ajustes para el contenido */
     .initials-header p {
         font-size: 2rem;
     }

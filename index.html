@@ -90,20 +90,20 @@
             </div>
             <div class="parent-group">
                 <p class="group-title-new">• PADRES de la Novia •</p>
-                <p>Santos Céspedes Bernilla</p>
-                <p>Jerónimo Perez Coronel</p>
+                <p>Santos **Céspedes** Bernilla</p>
+                <p>**Jerónimo** Perez Coronel</p>
             </div>
         </div>
         
         <p class="godparents-intro-custom">Y EN COMPAÑIA DE NUESTROS PADRINOS DE MATRIMONIO</p>
         <div class="godparents-list">
-            <p>César Augusto Pérez Céspedes</p>
-            <p>María del Socorro Pérez Céspedes</p>
+            <p>**César Augusto** Pérez **Céspedes**</p>
+            <p>María del Socorro Pérez **Céspedes**</p>
         </div>
         
         <p class="godparents-intro-custom" style="margin-top: 30px;">Y TESTIGOS DE MATRIMONIO</p>
         <div class="godparents-list">
-            <p>Karina Pérez Céspedes</p>
+            <p>Karina Pérez **Céspedes**</p>
             <p>Maribel Mayanga Seclen</p>
         </div>
     </section>
@@ -183,22 +183,21 @@
         const audio = document.getElementById('background-music');
         const welcomeGate = document.getElementById('welcome-gate');
         const startButton = document.getElementById('start-button');
-
-        // Función para iniciar la invitación (activada por el clic)
+        
+        // --- FUNCIÓN DE INICIO DE LA INVITACIÓN ---
         const startInvitation = () => {
-            // 1. Reproducir la música
+            // 1. Reproducir la música (activada por la interacción del usuario)
             audio.play().catch(error => {
-                console.error("Error al intentar reproducir el audio:", error);
-                // Si falla (aún con el clic), el navegador es muy estricto, pero la invitación sigue.
+                console.warn("La reproducción de música falló, es común en iOS/navegadores estrictos.");
             });
 
             // 2. Ocultar la pantalla de inicio
             welcomeGate.style.opacity = '0';
             setTimeout(() => {
                 welcomeGate.style.display = 'none';
-                // Solo iniciamos el auto-scroll DESPUÉS de que se ha abierto la invitación
+                // 3. Iniciar el auto-scroll
                 startAutoScroll(); 
-            }, 500); 
+            }, 500); // 0.5s para la transición de opacidad
         };
 
         // Escucha el clic en el botón de inicio
@@ -275,7 +274,7 @@
                 });
             }
         }
-        
+
         function startAutoScroll() {
              // Configurar el intervalo para el desplazamiento cada 5 segundos (5000ms)
             autoScrollInterval = setInterval(scrollToNextSection, 5000);
