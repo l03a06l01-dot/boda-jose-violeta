@@ -1,307 +1,198 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda JOSE & VIOLETA</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;700&family=Dancing+Script:wght@400;700&family=Cinzel:wght@400;700&family=Great+Vibes&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invitación de Boda - José y Violeta</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    section {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      height: 100vh;
+      width: 100vw;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      flex-direction: column;
+      transition: opacity 1s ease;
+    }
+
+    section.active {
+      display: flex;
+      opacity: 1;
+      z-index: 2;
+    }
+
+    h1, h2, h3, p {
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+    }
+
+    button {
+      background-color: rgba(255, 255, 255, 0.8);
+      color: #333;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1rem;
+      margin-top: 20px;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+
+    .background1 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://cdn.pixabay.com/photo/2016/03/09/09/17/wedding-rings-1249499_1280.jpg') center/cover no-repeat;
+    }
+
+    .background2 {
+      background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('https://cdn.pixabay.com/photo/2017/08/06/13/41/wedding-2595862_1280.jpg') center/cover no-repeat;
+    }
+
+    .background3 {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://cdn.pixabay.com/photo/2017/02/15/12/12/clock-2065590_1280.jpg') center/cover no-repeat;
+    }
+
+    .background4 {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://cdn.pixabay.com/photo/2016/10/09/08/53/wedding-1723983_1280.jpg') center/cover no-repeat;
+    }
+
+    .background5 {
+      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.7)), url('https://cdn.pixabay.com/photo/2017/06/20/00/19/wedding-2427437_1280.jpg') center/cover no-repeat;
+    }
+
+    .countdown {
+      font-size: 1.5rem;
+      margin-top: 15px;
+    }
+
+    .heart {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: url('https://cdn.pixabay.com/photo/2014/04/03/10/32/heart-309894_960_720.png') no-repeat center/contain;
+      animation: fall 5s linear infinite;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-10%) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+
+    .gif-deco {
+      width: 80px;
+      height: 80px;
+      margin: 20px auto;
+    }
+
+  </style>
 </head>
 <body>
 
-    <div id="welcome-gate">
-        <h1 class="initials-gate">J & V</h1>
-        <p class="names-gate">José y Violeta</p>
-        <p class="date-gate">25 de Octubre de 2025</p>
-        <button id="start-button" class="fancy-button start-button-gate">
-            <i class="fas fa-heart"></i> Abrir Invitación
-        </button>
-    </div>
+  <!-- Sección 1 -->
+  <section id="seccion1" class="background1 active">
+    <img src="https://media.giphy.com/media/3o6Zt8MgUuvSbkZYWc/giphy.gif" alt="Anillos" class="gif-deco">
+    <h1>¡Nuestra Boda!</h1>
+    <button onclick="nextSection(2)">Siguiente</button>
+  </section>
 
-    <audio id="background-music" src="wedding_song.mp3" loop></audio>
+  <!-- Sección 2 -->
+  <section id="seccion2" class="background2">
+    <h1>José & Violeta</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">“Dos almas, un solo corazón.”</p>
+    <button onclick="nextSection(3)">Siguiente</button>
+  </section>
 
-    <nav class="initials-header">
-        <p>J & V</p>
-    </nav>
+  <!-- Sección 3 -->
+  <section id="seccion3" class="background3">
+    <h2>25 de Octubre del 2025 - 6:00 PM</h2>
+    <div class="countdown" id="countdown"></div>
+    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Boda%20de%20José%20y%20Violeta&dates=20251025T180000Z/20251025T230000Z&details=Celebremos%20juntos%20este%20día%20tan%20especial.&location=https://maps.app.goo.gl/y1uumsCPiguarzex8" target="_blank">
+      <button>Agendar</button>
+    </a>
+    <button onclick="nextSection(4)">Siguiente</button>
+  </section>
 
-    <header class="hero-section">
-        <div class="hero-content">
-            <p class="intro-title script-font-large">¡Nos Casamos!</p>
-            <h1 class="couple-name">JOSE</h1>
-            <p class="and-text script-font-large">y</p>
-            <h1 class="couple-name">VIOLETA</h1>
-            
-            <div class="music-auto-note">
-                <p>Únete a este momento especial</p>
-            </div>
-        </div>
-    </header>
+  <!-- Sección 4 -->
+  <section id="seccion4" class="background4">
+    <h2>Recepción</h2>
+    <p style="font-size: 1.1rem; margin-top: 10px;">Únete a nosotros en este día tan especial.</p>
+    <a href="https://maps.app.goo.gl/y1uumsCPiguarzex8" target="_blank">
+      <button>Ver ubicación</button>
+    </a>
+    <button onclick="nextSection(5)">Siguiente</button>
+  </section>
 
-    <section id="bienvenida" class="content-section welcome-section">
-        <div class="image-frame-new">
-            <img src="historia_3.jpg" alt="Manos formando un corazón" class="welcome-image framed-image-new"> 
-        </div>
-        <div class="welcome-text">
-            <p class="initials-elegant">J & V</p> 
-            <p>Con mucha ilusión queremos vivir este momento rodeados de personas que han formado parte de nuestra historia. Será un honor contar con tu presencia.</p>
-            <p class="welcome-closing bold-green-text">¡Te Esperamos!</p>
-        </div>
-    </section>
-    
-    <section id="fecha" class="content-section date-section">
-        <h2 class="section-title script-font-title">Tenemos el agrado de invitarlos a <br>Nuestra Boda</h2>
-        
-        <div class="date-display-new">
-            <div class="date-item">
-                <p>SÁBADO</p>
-                <div class="underline"></div>
-            </div>
-            <div class="date-item">
-                <p class="day-number">25</p>
-            </div>
-            <div class="date-item">
-                <p>2025</p>
-                <div class="underline"></div>
-            </div>
-        </div>
-        <p class="month-new">OCTUBRE</p>
+  <!-- Sección 5 -->
+  <section id="seccion5" class="background5">
+    <h1>¡No faltes!</h1>
+    <p style="font-size: 1.2rem; margin-top: 10px;">“El amor nos unió, y queremos celebrarlo contigo.”</p>
+    <audio id="musica" autoplay loop>
+      <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+    </audio>
+  </section>
 
-        <a id="calendar-link" href="#" target="_blank" class="calendar-button fancy-button calendar-style-button green-icon-button">
-            <i class="fas fa-calendar-alt"></i> Agendar fecha
-        </a>
+  <script>
+    let currentSection = 1;
 
-        <p class="section-subtitle">Faltan...</p>
-        <div id="countdown" class="countdown-timer large-countdown-timer">
-            <div><span id="days">00</span> DÍAS</div>
-            <div><span id="hours">00</span> HORAS</div>
-            <div><span id="minutes">00</span> MINUTOS</div>
-            <div><span id="seconds">00</span> SEGUNDOS</div>
-        </div>
-    </section>
+    function nextSection(next) {
+      document.getElementById(`seccion${currentSection}`).classList.remove('active');
+      document.getElementById(`seccion${next}`).classList.add('active');
+      currentSection = next;
 
-    <section id="padres" class="content-section parents-section">
-        <p class="parents-intro">CON LA BENDICIÓN DE DIOS Y NUESTROS QUERIDOS PADRES</p>
-        <div class="parents-container">
-            <div class="parent-group">
-                <p class="group-title-new">• PADRES del Novio •</p>
-                <p>José Rufino López Ñiquen</p>
-                <p>María Mercedes Llumpo de López</p>
-            </div>
-            <div class="parent-group">
-                <p class="group-title-new">• PADRES de la Novia •</p>
-                <p>Santos Céspedes Bernilla</p>
-                <p>Jerónimo Pérez Coronel</p>
-            </div>
-        </div>
-        
-        <p class="godparents-intro-custom">Y EN COMPAÑIA DE NUESTROS PADRINOS DE MATRIMONIO</p>
-        <div class="godparents-list">
-            <p>César Augusto Pérez Céspedes</p>
-            <p>María del Socorro Pérez Céspedes</p>
-        </div>
-        
-        <p class="godparents-intro-custom" style="margin-top: 30px;">Y TESTIGOS DE MATRIMONIO</p>
-        <div class="godparents-list">
-            <p>Karina Pérez Céspedes</p>
-            <p>Maribel Mayanga Seclen</p>
-        </div>
-    </section>
+      if (next === 5) {
+        startHearts();
+        document.getElementById("musica").play();
+      }
+    }
 
-    <section id="eventos" class="content-section events-section">
-        <h2 class="section-title">Ceremonia y Recepción</h2>
-        <div class="event-details single-event">
-            <div class="event-card">
-                <img src="icon_casa.png" alt="Icono de Ubicación" class="event-icon colored-icon"> 
-                <h3 class="script-font-small">Todo en el Mismo Lugar</h3>
-                <p class="location-name">Recepción en Casa de los Novios</p>
-                <p class="time">7:00 PM</p>
-                <p class="address">Calle Diego Ferre #925, Ciudad Eten</p>
-                <a href="https://maps.app.goo.gl/264h5KmUruHVQMKS6" target="_blank" class="map-link-button fancy-button green-icon-button"><i class="fas fa-map-marker-alt"></i> Ver mapa</a>
-            </div>
-        </div>
-    </section>
+    // Cuenta regresiva
+    const countdown = document.getElementById("countdown");
+    const targetDate = new Date("Oct 25, 2025 18:00:00").getTime();
 
-    <section id="vestimenta" class="content-section dress-code-section">
-        <div class="image-frame-new">
-            <img src="vestido_espalda.jpg" alt="Detalle de vestido de novia" class="dress-code-image framed-image-new">
-        </div>
-        <h2 class="section-title">Código de vestimenta</h2>
-        <p class="dress-code-note">SE RECOMIENDA NO USAR COLOR VERDE NI BLANCO</p>
-    </section>
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
 
-    <section id="frase-biblica" class="content-section quote-section">
-        <div class="image-frame-new">
-            <img src="sillas_decoradas.jpg" alt="Sillas en una ceremonia al aire libre" class="quote-image framed-image-new">
-        </div>
-        <p class="quote-text">El amor nunca se da por vencido, jamás pierde la fe, siempre tiene esperanzas y se mantiene firme en toda circunstancia.</p>
-        <p class="bible-ref-new">1 Corintios 13:7</p>
-    </section>
+    // Corazones animados
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }, 300);
+    }
+  </script>
 
-    <section id="deseos" class="content-section wishes-section">
-        <i class="icon heart-box-icon">♥</i>
-        <h2 class="section-title">Buzón de deseos</h2>
-        <p>Nos encantaría leer tus buenos deseos. ¡Déjanos un mensaje que recordaremos por siempre!</p>
-        
-        <a id="wishes-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdDLZwZfbsIVLXEvHNbpd2qjJOA0ukIMmzHw0j116oqbG2FGQ/viewform?usp=sharing&ouid=112484745039533512538" target="_blank" class="wishes-button fancy-button green-icon-button">
-            <i class="fas fa-envelope-open-text"></i> Clic aquí
-        </a>
-    </section>
-
-    <section id="frase-final" class="content-section final-quote-section">
-        <div class="image-frame-new">
-            <img src="anillos_sobre_flor.jpg" alt="Anillos de boda sobre una flor" class="quote-image framed-image-new">
-        </div>
-        <p class="quote-text">"El amor nos ha llevado a este momento mágico. Los invitamos a ser testigos de nuestra promesa de amor eterno."</p>
-    </section>
-    
-    <section class="final-cta-section" id="final-cta">
-        <h2 class="section-title large-text-final">¡Los esperamos, sean puntuales!</h2>
-        <img src="final_image.jpg" alt="Imagen de despedida o cierre" class="final-cta-image"> 
-    </section>
-
-    <footer>
-        <p>JOSÉ & VIOLETA</p>
-    </footer>
-
-    <svg width="0" height="0" style="position:absolute;">
-        <defs>
-            <clipPath id="torn-paper-clip" clipPathUnits="objectBoundingBox">
-                <path d="M0.016,0.019 C0.054,-0.002,0.117,-0.007,0.187,0.015 C0.276,0.043,0.377,0.081,0.472,0.095 C0.567,0.109,0.665,0.092,0.748,0.065 C0.831,0.038,0.893,0.012,0.957,0.004 C0.978,0.001,1,0.006,1,0.024 L1,0.976 C1,0.994,0.978,0.999,0.957,0.996 C0.893,0.988,0.831,0.962,0.748,0.935 C0.665,0.908,0.567,0.891,0.472,0.905 C0.377,0.919,0.276,0.957,0.187,0.985 C0.117,1.007,0.054,1.002,0.016,0.981 C0.005,0.975,0,0.973,0,0.976 L0,0.024 C0,0.006,0.005,0.001,0.016,0.019 Z" />
-            </clipPath>
-        </defs>
-    </svg>
-
-    <script>
-        // DATOS DE LA BODA
-        const WEDDING_DATE = "October 25, 2025 19:00:00"; 
-        const EVENT_TITLE = "Boda José y Violeta";
-        const EVENT_DETAILS = "Ceremonia y Recepción de José y Violeta. ¡Los esperamos en Casa de los Novios!";
-        const EVENT_LOCATION = "Calle Diego Ferre #925, Ciudad Eten"; 
-
-        // Referencia al audio
-        const audio = document.getElementById('background-music');
-        const welcomeGate = document.getElementById('welcome-gate');
-        const startButton = document.getElementById('start-button');
-        
-        // --- FUNCIÓN DE INICIO DE LA INVITACIÓN ---
-        const startInvitation = () => {
-            // 1. Reproducir la música (activada por la interacción del usuario)
-            audio.play().catch(error => {
-                console.warn("La reproducción de música falló, es común en iOS/navegadores estrictos.");
-            });
-
-            // 2. Ocultar la pantalla de inicio
-            welcomeGate.style.opacity = '0';
-            setTimeout(() => {
-                welcomeGate.style.display = 'none';
-                
-                // 3. Iniciar la animación de la portada
-                document.querySelector('.hero-content').classList.add('animate');
-
-                // 4. Iniciar el auto-scroll
-                startAutoScroll(); 
-            }, 500); // 0.5s para la transición de opacidad
-        };
-
-        // Escucha el clic en el botón de inicio
-        startButton.addEventListener('click', startInvitation, { once: true });
-
-
-        // 1. Contador de Tiempo
-        const weddingTime = new Date(WEDDING_DATE).getTime();
-        const countdownElement = document.getElementById("countdown");
-
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = weddingTime - now;
-
-            if (distance < 0) {
-                clearInterval(x);
-                countdownElement.innerHTML = "¡El gran día ha llegado!";
-                return;
-            }
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = String(days).padStart(2, '0');
-            document.getElementById("hours").innerHTML = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerHTML = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerHTML = String(seconds).padStart(2, '0');
-        }, 1000);
-        
-        // 2. Función para crear el enlace de Calendario
-        document.addEventListener('DOMContentLoaded', () => {
-            const date = new Date(WEDDING_DATE);
-            
-            const formatDateForCalendar = (d) => d.toISOString().replace(/-|:|\.\d{3}/g, "").slice(0, -4); 
-            
-            const formattedDate = formatDateForCalendar(date); 
-            const endDateTime = new Date(date.getTime() + (3 * 60 * 60 * 1000));
-            const formattedEndDate = formatDateForCalendar(endDateTime);
-
-            const calendarLink = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(EVENT_TITLE)}&dates=${formattedDate}/${formattedEndDate}&details=${encodeURIComponent(EVENT_DETAILS)}&location=${encodeURIComponent(EVENT_LOCATION)}`;
-            
-            document.getElementById('calendar-link').href = calendarLink;
-        });
-
-        // 3. Implementación del desplazamiento automático (Auto-Scroll)
-
-        const scrollSections = [
-            document.querySelector('.hero-section'), 
-            document.getElementById('bienvenida'),    
-            document.getElementById('fecha'),         
-            document.getElementById('padres'),        
-            document.getElementById('eventos'),       
-            document.getElementById('vestimenta'),    
-            document.getElementById('frase-biblica'), 
-            document.getElementById('deseos'),        
-            document.getElementById('frase-final'),   
-            document.getElementById('final-cta')      
-        ];
-
-        let currentSectionIndex = 0;
-        let autoScrollInterval;
-
-        function scrollToNextSection() {
-            currentSectionIndex = (currentSectionIndex + 1) % scrollSections.length;
-            
-            const nextSection = scrollSections[currentSectionIndex];
-
-            if (nextSection) {
-                nextSection.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        }
-
-        function startAutoScroll() {
-             // Configurado a 5 segundos (5000ms)
-            autoScrollInterval = setInterval(scrollToNextSection, 5000);
-        }
-        
-        // Detener el scroll si el usuario interactúa
-        let userInteracted = false;
-        const interactionEvents = ['wheel', 'touchstart', 'keydown'];
-
-        const stopAutoScroll = () => {
-            if (!userInteracted) {
-                clearInterval(autoScrollInterval);
-                userInteracted = true; 
-                
-                interactionEvents.forEach(event => {
-                    window.removeEventListener(event, stopAutoScroll);
-                });
-            }
-        };
-
-        interactionEvents.forEach(event => {
-            window.addEventListener(event, stopAutoScroll, { once: true });
-        });
-    </script>
 </body>
 </html>
